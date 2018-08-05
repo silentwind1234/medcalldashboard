@@ -1,0 +1,70 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-8">
+      <h2>{{title}}</h2>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="tabs-container">
+                    <ul class="nav nav-tabs">
+                        <li class="">
+                        <a data-toggle="tab" [routerLink]="['/providers', typeFlag,'edit', id]">Basic</a>
+                        </li>
+                        <li class="">
+                        <a data-toggle="tab" [routerLink]="['/providers', typeFlag,'edit', id, 'address']">Address</a>
+                        </li>
+                        <!--
+                        <li class="">
+                            <a data-toggle="tab" [routerLink]="['/providers', typeFlag,'edit', id, 'specialties']">Specialties</a>
+                        </li>
+                        -->
+                        <li class="active">
+                            <a data-toggle="tab" [routerLink]="['/providers', typeFlag,'edit', id, 'certificates']">Certificates</a>
+                        </li>
+                        <li class="">
+                            <a data-toggle="tab" [routerLink]="['/providers', typeFlag,'edit', id, 'experiences']">Experiences</a>
+                        </li>
+                        <!--
+                        <li class="">
+                            <a data-toggle="tab" [routerLink]="['/providers', typeFlag,'edit', id, 'audit']">Audit</a>
+                        </li>
+                        -->
+                    </ul>
+                </div>
+                <div class="ibox-content">
+                    <div class="tab-content">
+                        <ngx-datatable class="bootstrap"
+                        [rows]="items.result"
+                        [loadingIndicator]="loadingIndicator"
+                        [headerHeight]="40"
+                        [footerHeight]="40"
+                        [columnMode]="'force'"
+                        [rowHeight]="40"
+                        [externalPaging]="true"
+                        [count]="count"
+                        [offset]="items.pageIndex"
+                        [limit]="items.pageSize"
+                        (page)='loadPage($event)'>
+                            <ngx-datatable-column name="Rank" prop="rank" [width]="80"></ngx-datatable-column>
+                            <ngx-datatable-column name="Name" prop="name"></ngx-datatable-column>
+                            <ngx-datatable-column name="Enabled" prop="isEnabled"></ngx-datatable-column>
+                            <ngx-datatable-column name="Actions" sortable="false" prop="id" [width]="80">
+                                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                    <button md-icon-button class="btn-white" (click)="deleteConfirm(value)">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                    <button md-icon-button class="btn-white" (click)="openModalWithComponent(value)">
+                                        <i class="fa fa-pencil"></i>
+                                    </button>
+                                </ng-template>
+                            </ngx-datatable-column>
+                        </ngx-datatable>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  

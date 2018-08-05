@@ -1,0 +1,28 @@
+import { Component, OnInit, HostListener } from '@angular/core';
+import { detectBody } from '../../../app.helpers';
+
+declare var jQuery: any;
+
+@Component({
+  selector: 'app-top-navigation-layout',
+  templateUrl: 'topNavigationlayout.template.html'
+  // ,
+  // host: {
+  //  '(window:resize)': 'onResize()'
+  // }
+})
+export class TopNavigationLayoutComponent implements OnInit {
+
+  @HostListener('window:resize') onResize() {
+    detectBody();
+  }
+
+  public ngOnInit() {
+    detectBody();
+  }
+
+  // public onResize() {
+  //  detectBody();
+  // }
+
+}

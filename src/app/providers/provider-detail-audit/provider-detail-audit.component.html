@@ -1,0 +1,111 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-8">
+      <h2>{{title}}</h2>
+    </div>
+  </div>
+  <div class="wrapper wrapper-content animated fadeInRight">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="ibox float-e-margins">
+            <div class="tabs-container">
+                <ul class="nav nav-tabs">
+                    <li class="">
+                      <a data-toggle="tab" [routerLink]="['/providers', page.typeFlag,'edit', page.id]">Basic</a>
+                    </li>
+                    <li class="">
+                      <a data-toggle="tab" [routerLink]="['/providers', page.typeFlag,'edit', page.id, 'address']">Address</a>
+                    </li>
+                    <li class="">
+                        <a data-toggle="tab" [routerLink]="['/providers', page.typeFlag,'edit', page.id, 'specialties']">Specialties</a>
+                    </li>
+                    <li class="">
+                        <a data-toggle="tab" [routerLink]="['/providers', page.typeFlag,'edit', page.id, 'certificates']">Certificates</a>
+                    </li>
+                    <li class="">
+                        <a data-toggle="tab" [routerLink]="['/providers', page.typeFlag,'edit', page.id, 'experiences']">Experiences</a>
+                    </li>
+                    <li class="active">
+                        <a data-toggle="tab" [routerLink]="['/providers', page.typeFlag,'edit', page.id, 'audit']">Audit</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="ibox-content">
+                <form class="form-horizontal" [formGroup]="itemForm" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+                    <!-- fields start -->
+                    <div class="form-group row">
+                        <label for="joinDate" class="col-sm-3 form-control-label">Join Date</label>
+                        <div class="col-sm-9">
+                            <input id="joinDate" type="text" formControlName="joinDate" class="form-control">
+                            <span class="text-danger" *ngIf="itemForm.hasError('required', ['joinDate']) && formDir.submitted">
+                                Required.
+                            </span>
+                        </div>
+                    </div>                    
+
+                    <div class="form-group row">
+                        <label for="ip" class="col-sm-3 form-control-label">IP</label>
+                        <div class="col-sm-9">
+                            <input id="ip" type="text" formControlName="ip" class="form-control">
+                            <span class="text-danger" *ngIf="itemForm.hasError('required', ['ip']) && formDir.submitted">
+                                Required.
+                            </span>
+                            <span class="text-danger" *ngIf="itemForm.hasError('minlength', ['ip']) && formDir.submitted">
+                                Must be at least 15 characters long.
+                            </span>
+                            <span class="text-danger" *ngIf="itemForm.hasError('maxlength', ['ip']) && formDir.submitted">
+                                Must be less than 16 characters long.
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="createdBy" class="col-sm-3 form-control-label">Created By</label>
+                        <div class="col-sm-9">
+                            <input id="createdBy" type="text" formControlName="createdBy" class="form-control">
+                            <span class="text-danger" *ngIf="itemForm.hasError('required', ['createdBy']) && formDir.submitted">
+                                Required.
+                            </span>
+                            <span class="text-danger" *ngIf="itemForm.hasError('minlength', ['createdBy']) && formDir.submitted">
+                                Must be at least 3 characters long.
+                            </span>
+                            <span class="text-danger" *ngIf="itemForm.hasError('maxlength', ['createdBy']) && formDir.submitted">
+                                Must be less than 256 characters long.
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="ip" class="col-sm-3 form-control-label">Edited By</label>
+                        <div class="col-sm-9">
+                            <input id="editedBy" type="text" formControlName="editedBy" class="form-control">
+                            <span class="text-danger" *ngIf="itemForm.hasError('required', ['editedBy']) && formDir.submitted">
+                                Required.
+                            </span>
+                            <span class="text-danger" *ngIf="itemForm.hasError('minlength', ['editedBy']) && formDir.submitted">
+                                Must be at least 3 characters long.
+                            </span>
+                            <span class="text-danger" *ngIf="itemForm.hasError('maxlength', ['editedBy']) && formDir.submitted">
+                                Must be less than 256 characters long.
+                            </span>
+                        </div>
+                    </div>
+
+
+
+
+                    <!-- fields end -->
+                    <!-- buttons start -->
+                    <div class="form-group row">
+                        <div class="offset-sm-3 col-sm-9">
+                            <button type="submit" [disabled]="itemForm.invalid" class="btn btn-primary btn-tn m-r-xs">Save</button>
+                            <button class="btn btn-secondary btn-demo btn-tn" (click)="cancel()">Cancel</button>
+                        </div>
+                    </div>
+                    <!-- buttons end -->
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>  
+  

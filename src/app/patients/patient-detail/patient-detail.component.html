@@ -1,0 +1,171 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-8">
+        <h2>{{title}}</h2>
+    </div>
+  </div>
+  
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="tabs-container">
+            <ul class="nav nav-tabs">
+                <li class="active">
+                  <a data-toggle="tab" [routerLink]="['/patients', 'edit', page.id]">Basic</a>
+                </li>
+                <li class="">
+                  <a data-toggle="tab" [routerLink]="['/patients', 'edit', page.id, 'address']">Address</a>
+                </li>
+                <!--
+                <li class="">
+                    <a data-toggle="tab" [routerLink]="['/providers', 'edit', page.id, 'specialties']">Specialties</a>
+                </li>
+                -->
+            </ul>
+        </div>
+        <div class="ibox-content">
+          <form class="form-horizontal" [formGroup]="itemForm" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+            <!-- fields start -->
+            <div class="form-group row">
+                <label for="givenName" class="col-sm-3 form-control-label">First Name</label>
+                  <div class="col-sm-9">
+                    <input id="givenName" type="text" formControlName="givenName" class="form-control">
+                    <span class="text-danger" *ngIf="itemForm.hasError('required', ['givenName']) && formDir.submitted">
+                      Required.
+                    </span>
+                    <span class="text-danger" *ngIf="itemForm.hasError('minlength', ['givenName']) && formDir.submitted">
+                      Must be at least 4 characters long.
+                    </span>
+                    <span class="text-danger" *ngIf="itemForm.hasError('maxlength', ['givenName']) && formDir.submitted">
+                      Must be less than 128 characters long.
+                    </span>
+                  </div>
+              </div>
+    
+              <div class="form-group row">
+                  <label for="familyName" class="col-sm-3 form-control-label">Family Name</label>
+                    <div class="col-sm-9">
+                      <input id="familyName" type="text" formControlName="familyName" class="form-control">
+                      <span class="text-danger" *ngIf="itemForm.hasError('required', ['familyName']) && formDir.submitted">
+                        Required.
+                      </span>
+                      <span class="text-danger" *ngIf="itemForm.hasError('minlength', ['familyName']) && formDir.submitted">
+                        Must be at least 4 characters long.
+                      </span>
+                      <span class="text-danger" *ngIf="itemForm.hasError('maxlength', ['familyName']) && formDir.submitted">
+                        Must be less than 128 characters long.
+                      </span>
+                    </div>
+              </div>
+    
+              <!-- Gender -->
+              <div class="form-group row">
+                <label for="Gender" class="col-sm-3 form-control-label">Gender</label>
+                <div class="col-sm-9">
+                  <div class="form-check form-check-inline">
+                    <label class="custom-control custom-radio">
+                      <input id="gender-male"
+                           type="radio"
+                           class="custom-control-input"
+                           [value]="1"
+                           formControlName="gender">
+                      <span class="custom-control-indicator"></span>
+                      <span class="custom-control-description">Male</span>
+                    </label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <label class="custom-control custom-radio">
+                      <input id="gender-female"
+                           type="radio"
+                           class="custom-control-input"
+                           [value]="2"
+                           formControlName="gender">
+                      <span class="custom-control-indicator"></span>
+                      <span class="custom-control-description">Female</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <!-- Marital Status
+              <div class="form-group row">
+                  <label for="MaritalStatus" class="col-sm-3 form-control-label">Marital Status</label>
+                  <div class="col-sm-9">
+                    <div class="form-check form-check-inline">
+                      <label class="custom-control custom-radio">
+                        <input id="maritalStatus-single"
+                             type="radio"
+                             class="custom-control-input"
+                             [value]="1"
+                             formControlName="maritalStatus">
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">Single</span>
+                      </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <label class="custom-control custom-radio">
+                        <input id="maritalStatus-married"
+                             type="radio"
+                             class="custom-control-input"
+                             [value]="2"
+                             formControlName="maritalStatus">
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">Married</span>
+                      </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="custom-control custom-radio">
+                          <input id="maritalStatus-widowed"
+                               type="radio"
+                               class="custom-control-input"
+                               [value]="3"
+                               formControlName="maritalStatus">
+                          <span class="custom-control-indicator"></span>
+                          <span class="custom-control-description">Widowed</span>
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="custom-control custom-radio">
+                          <input id="maritalStatus-divorcee"
+                               type="radio"
+                               class="custom-control-input"
+                               [value]="4"
+                               formControlName="maritalStatus">
+                          <span class="custom-control-indicator"></span>
+                          <span class="custom-control-description">Divorcee</span>
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="custom-control custom-radio">
+                          <input id="maritalStatus-other"
+                               type="radio"
+                               class="custom-control-input"
+                               [value]="5"
+                               formControlName="maritalStatus">
+                          <span class="custom-control-indicator"></span>
+                          <span class="custom-control-description">Other</span>
+                        </label>
+                    </div>
+                  </div>
+                </div>
+              -->
+            <div class="form-group row">
+              <div class="offset-sm-3 col-sm-9">
+                <div class="checkbox">
+                  <label> <input type="checkbox" class="i-checks" formControlName="isEnabled"> Enabled </label>
+                </div>
+              </div>
+            </div>
+            <!-- fields end -->
+            <!-- buttons start -->
+            <div class="form-group row">
+              <div class="offset-sm-3 col-sm-9">
+                <button type="submit" [disabled]="itemForm.invalid" class="btn btn-primary btn-tn m-r-xs">Save</button>
+                <button class="btn btn-secondary btn-demo btn-tn" (click)="cancel()">Cancel</button>
+              </div>
+            </div>
+            <!-- buttons end -->
+        </form>
+      </div>
+    </div>
+  </div>
+</div>  

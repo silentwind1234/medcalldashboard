@@ -1,0 +1,99 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-8">
+        <h2>{{title}}</h2>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-content">
+
+            <form class="form-horizontal" [formGroup]="itemForm" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+                <div class="form-group row">
+                  <label for="Name" class="col-sm-3 form-control-label">Name</label>
+                  <div class="col-sm-9">
+                    <input id="name" type="text" formControlName="name" class="form-control">
+                    <span class="text-danger" *ngIf="itemForm.hasError('required', ['name']) && formDir.submitted">
+                      Required.
+                    </span>
+                    <span class="text-danger" *ngIf="itemForm.hasError('minlength', ['name'])">
+                      Must be at least 4 characters long.
+                    </span>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="NameArabic" class="col-sm-3 form-control-label">Arabic</label>
+                  <div class="col-sm-9">
+                    <input type="text" formControlName="nameArabic" class="form-control">
+                    <span class="text-danger" *ngIf="itemForm.hasError('required', ['nameArabic']) && formDir.submitted">
+                      Required.
+                    </span>
+                    <span class="text-danger" *ngIf="itemForm.hasError('minlength', ['nameArabic'])">
+                      Must be at least 4 characters long.
+                    </span>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="Code" class="col-sm-3 form-control-label">Code</label>
+                  <div class="col-sm-9">
+                    <input type="text" formControlName="code" class="form-control">
+                    <span class="text-danger" *ngIf="itemForm.hasError('required', ['code']) && formDir.submitted">
+                      Required.
+                    </span>
+                    <span class="text-danger" *ngIf="itemForm.hasError('minlength', ['code']) || itemForm.hasError('maxlength', ['code'])">
+                      Must be 3 characters long.
+                    </span>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="Code2" class="col-sm-3 form-control-label">Code 2</label>
+                  <div class="col-sm-9">
+                    <input type="text" formControlName="code2" class="form-control">
+                    <span class="text-danger" *ngIf="itemForm.hasError('required', ['code']) && formDir.submitted">
+                      Required.
+                    </span>
+                    <span class="text-danger" *ngIf="itemForm.hasError('minlength', ['code2']) || itemForm.hasError('maxlength', ['code2'])">
+                      Must be 2 characters long.
+                    </span>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="Rank" class="col-sm-3 form-control-label">Display Order</label>
+                  <div class="col-sm-9">
+                    <input type="text" formControlName="rank" class="form-control">
+                    <span class="text-danger" *ngIf="itemForm.hasError('onlynumber', ['rank']) && formDir.submitted">
+                      Numbers Only.
+                    </span>
+                  </div>
+                </div>
+                
+                <div class="form-group row">
+                  <div class="offset-sm-3 col-sm-9">
+                    <div class="checkbox">
+                      <label> <input type="checkbox" class="i-checks" formControlName="isEnabled"> Enabled </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- buttons start -->
+            <div class="form-group row">
+                <div class="offset-sm-3 col-sm-9">
+                  <button type="submit" [disabled]="itemForm.invalid" class="btn btn-primary btn-tn m-r-xs">Save</button>
+                  <button class="btn btn-secondary btn-demo btn-tn" (click)="cancel()">Cancel</button>
+                </div>
+              </div>
+              <!-- buttons end -->
+              </form>
+        </div> <!-- ibox content -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  
+  <p>Form value: {{ itemForm.value | json }}</p>
+  

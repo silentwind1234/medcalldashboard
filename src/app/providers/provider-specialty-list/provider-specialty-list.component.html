@@ -1,0 +1,38 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-8">
+      <h2>{{title}}</h2>
+    </div>
+  </div>
+  <div class="wrapper wrapper-content animated fadeInRight">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="ibox float-e-margins">
+            <div class="tabs-container">
+                <ul class="nav nav-tabs">
+                    <li class="">
+                      <a data-toggle="tab" [routerLink]="['/providers', page.typeFlag,'edit', page.id]">Basic</a>
+                    </li>
+                    <li class="">
+                      <a data-toggle="tab" [routerLink]="['/providers', page.typeFlag,'edit', page.id, 'address']">Address</a>
+                    </li>
+                    <li class="active">
+                        <a data-toggle="tab" [routerLink]="['/providers', page.typeFlag,'edit', page.id, 'specialties']">Specialties</a>
+                    </li>
+                    <li class="">
+                        <a data-toggle="tab" [routerLink]="['/providers', page.typeFlag,'edit', page.id, 'certificates']">Certificates</a>
+                    </li>
+                    <li class="">
+                        <a data-toggle="tab" [routerLink]="['/providers', page.typeFlag,'edit', page.id, 'experiences']">Experiences</a>
+                    </li>
+                    <li class="">
+                        <a data-toggle="tab" [routerLink]="['/providers', page.typeFlag,'edit', page.id, 'audit']">Audit</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="ibox-content">
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>  
+  

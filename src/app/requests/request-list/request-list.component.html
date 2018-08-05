@@ -1,0 +1,74 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-8">
+        <h2>{{title}}</h2>
+    </div>
+    <div class="col-sm-4 m-t-md">
+        <!--
+        <div class="pull-right">
+            <button (click)="create()" class="btn btn-primary btn-tn">Add</button>
+        </div>
+        <span class="pull-right m-xs m-r-md">
+            <label> <input type="checkbox" class="i-checks" (change)="toggleEnabled($event)"> Show all </label>
+        </span>
+        -->
+    </div>
+</div>
+  <div class="wrapper wrapper-content animated fadeInRight">
+    
+  <div class="row">
+      <div class="col-lg-12">
+              <div class="ibox float-e-margins">
+                      <div class="ibox-content">
+          <ngx-datatable class="bootstrap"
+          [rows]="items.result"
+          [loadingIndicator]="loadingIndicator"
+          [headerHeight]="40"
+          [footerHeight]="40"
+          [columnMode]="'force'"
+          [rowHeight]="40"
+          [externalPaging]="true"
+          [count]="count"
+          [offset]="items.pageIndex"
+          [limit]="items.pageSize"
+          (page)='loadPage($event)'>
+            <ngx-datatable-column name="Visit Date" prop="visitDate" [width]="200">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                    {{value | date:'medium'}}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Patient" prop="patientName"></ngx-datatable-column>
+            <ngx-datatable-column name="Type" prop="providerType" [width]="100">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                    {{value | providerTypeString}}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Specialty" prop="specialty"></ngx-datatable-column>
+            <ngx-datatable-column name="Provider" prop="providerName"></ngx-datatable-column>
+            <ngx-datatable-column name="Cost" prop="cost" [width]="80"></ngx-datatable-column>
+            <!--
+            <ngx-datatable-column name="Close Date" prop="closeDate">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                    {{value | date:'medium'}}
+                </ng-template>
+            </ngx-datatable-column>
+            -->
+            <ngx-datatable-column name="Actions" sortable="false" prop="id" [width]="80">
+                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                    <!--
+                    <button md-icon-button class="btn-white" (click)="deleteConfirm(value)">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                    -->
+                    
+                    <button md-icon-button class="btn-white" [routerLink]="['edit', value]">
+                        <i class="fa fa-pencil"></i>
+                    </button>
+                    
+                </ng-template>
+            </ngx-datatable-column>
+        </ngx-datatable>
+                      </div>
+              </div>
+        </div>
+    </div>
+  </div>

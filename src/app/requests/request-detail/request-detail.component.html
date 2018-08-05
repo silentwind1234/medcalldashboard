@@ -1,0 +1,82 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-8">
+        <h2>{{title}}</h2>
+    </div>
+  </div>
+  
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-content">
+            <div class="row">
+                <div class="col-lg-6">
+                  <div>
+                    <h3>Patient</h3>
+                  </div>
+                  <dl class="dl-horizontal">
+                      <dt>Name:</dt> <dd> {{item.patientName}}</dd>
+                      <dt>Specialty</dt> <dd> {{item.specialty}} </dd>
+                      <dt>Price Range:</dt> <dd>  {{item.priceRange}}</dd>
+                      <dt>Notes:</dt> <dd class="text-navy">{{item.notes}}</dd>
+                      <dt>Rating:</dt> <dd>  {{item.providerRating}}</dd>
+                  </dl>
+
+                </div>
+                <div class="col-lg-6" *ngIf="item.status>1;else approveContent">
+                    <div>
+                      <h3>Provider</h3>
+                    </div>
+                    <dl class="dl-horizontal">
+                        <dt>Name:</dt> <dd>{{item.providerName}}</dd>
+                        <dt>Type</dt> <dd> {{item.providerType | providerTypeString}} </dd>
+                        <dt>Cost:</dt> <dd>  {{item.cost}}</dd>
+                        <dt>Notes:</dt> <dd class="text-navy">{{item.providerNotes}}</dd>
+                        <dt>Rating:</dt> <dd>  {{item.patientRating}}</dd>
+                    </dl>
+                </div>
+                <ng-template #approveContent>
+                    <div class="col-lg-6">
+                        <button (click)="approve()" class="btn btn-primary btn-tn m-r-xs">Approve</button>
+                    </div>
+                </ng-template>
+            </div>
+            <hr/>
+            <div class="row">
+                <div class="col-lg-12">
+                    <dl class="dl-horizontal">
+                      <!--
+                        <dt>Request Date:</dt> <dd> {{item.requestDate | date:'medium'}}</dd>
+                      -->
+                        <dt>Visit Date:</dt> <dd>  {{item.visitDate | date:'medium'}}</dd>
+                        <dt>Complete Date</dt> <dd> {{item.closeDate | date:'medium'}} </dd>
+                    </dl>
+                </div>
+            </div>
+
+          <!--
+          <form class="form-horizontal" [formGroup]="itemForm" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+          -->
+            <!-- fields start -->
+          <!--
+            <div class="form-group row">
+              
+            </div>
+          -->
+            <!-- fields end -->
+            <!-- buttons start -->
+          <!--  
+            <div class="form-group row">
+              <div class="offset-sm-3 col-sm-9">
+                <button type="submit" [disabled]="itemForm.invalid" class="btn btn-primary btn-tn m-r-xs">Save</button>
+                <button class="btn btn-secondary btn-demo btn-tn" (click)="cancel()">Cancel</button>
+              </div>
+            </div>
+          -->
+            <!-- buttons end -->
+        <!--</form>
+        -->
+      </div>
+    </div>
+  </div>
+</div>  
